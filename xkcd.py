@@ -42,12 +42,12 @@ def os_identification():
 def set_wallpaper():
 	if os_identification() == "darwin":
 		create_wallpaper()
-		app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";"	.format("/Users/sarthakmunshi/Desktop/xkcd/out.png")
+		app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";"	.format("~/out.png")
 		os.system(app_script)
 		os.system("killall Dock;")
 	elif os_identification() == "linux2":
 		create_wallpaper()
-		linux_path = "file:///"
+		linux_path = "file:///out.png"
 		mint = "gsettings set org.cinnamon.desktop.background picture-uri " + linux_path  
 		ubuntu = "gsettings set org.gnome.desktop.background picture-uri " + linux_path
 		try:
