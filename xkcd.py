@@ -1,4 +1,4 @@
-#!/usr/bin/env/python
+#!/usr/bin/env python
 
 import requests
 from bs4 import BeautifulSoup
@@ -26,8 +26,20 @@ def create_wallpaper():
 	download_comic()
 	comic = Image.open('00000000.png','r')
 	comic_w, comic_h = comic.size
+        width = 1440
+        height = 900
 
-	background = Image.new('RGBA', (1440,900), (255,255,255,255))
+        try:
+            import gi
+            gi.require_version('Gdk', '3.0')
+            from gi.repository import Gdk
+            screen = Gdk.Screen.get_default()
+            width = screen.get_monitor_geometry(0).width
+            height = screen.get_monitor_geometry(0).height
+        except:
+            print("no Gdk found ")
+
+        background = Image.new('RGBA', (width,height), (255,255,255,255))
 	background_w, background_h = background.size
 
 	offset = ( (background_w - comic_w) / 2, (background_h - comic_h) / 2 )
@@ -40,13 +52,12 @@ def os_identification():
 	return sys.platform
 
 def set_wallpaper():
+	create_wallpaper()
 	if os_identification() == "darwin":
-		create_wallpaper()
 		app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";"	.format("~/out.png")
 		os.system(app_script)
 		os.system("killall Dock;")
 	elif os_identification() == "linux2":
-		create_wallpaper()
 		linux_path = "file:///out.png"
 		mint = "gsettings set org.cinnamon.desktop.background picture-uri " + linux_path  
 		ubuntu = "gsettings set org.gnome.desktop.background picture-uri " + linux_path
@@ -54,6 +65,10 @@ def set_wallpaper():
 			os.system(mint)
 		except:
 			os.system(ubuntu)
+	elif os_identification() == "linux":
+		linux_path = "out.png"
+		arch = "gsettings set org.gnome.desktop.background picture-uri " + linux_path
+		os.system(arch)
 
 if __name__ == '__main__':
 	set_wallpaper()
