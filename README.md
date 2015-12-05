@@ -20,3 +20,7 @@ Now for it to automatically change your wallpaper, set it as a cron job. Setting
 you can read about it here `http://benr75.com/pages/using_crontab_mac_os_x_unix_linux` .
 
 ## Screenshots
+
+Will probably look something like this ,
+
+![](http://i66.tinypic.com/35a3tbs.jpg)

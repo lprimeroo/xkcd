@@ -1,3 +1,5 @@
+#!/usr/bin/env/python
+
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
