@@ -9,6 +9,7 @@ Make sure you have the following python libraries installed ,
 pip install requests
 pip install pillow
 pip install beautifulsoup4
+pip install gi
 ```
 
 For installation ,

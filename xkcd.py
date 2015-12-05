@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import sys
 import os
+import gi
+gi.require_version('Gdk', '3.0')
+from gi.repository import Gdk
 
 def get_comic():
 	r = requests.get("http://xkcd.com/")
@@ -17,10 +20,12 @@ def get_comic():
 		comic_link =  "http:" + comic.img['src']
 	return comic_link
 
+
 def download_comic():
 	f = open('00000000.png','wb')
 	f.write( requests.get( get_comic() ).content )
 	f.close()
+
 
 def create_wallpaper():
 	download_comic()
@@ -28,18 +33,14 @@ def create_wallpaper():
 	comic_w, comic_h = comic.size
         width = 1440
         height = 900
-
         try:
-            import gi
-            gi.require_version('Gdk', '3.0')
-            from gi.repository import Gdk
             screen = Gdk.Screen.get_default()
             width = screen.get_monitor_geometry(0).width
             height = screen.get_monitor_geometry(0).height
         except:
-            print("no Gdk found ")
+            print("No GDK Found ")
 
-        background = Image.new('RGBA', (width,height), (255,255,255,255))
+    background = Image.new('RGBA', (width,height), (255,255,255,255))
 	background_w, background_h = background.size
 
 	offset = ( (background_w - comic_w) / 2, (background_h - comic_h) / 2 )
@@ -57,6 +58,7 @@ def set_wallpaper():
 		app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";"	.format("~/out.png")
 		os.system(app_script)
 		os.system("killall Dock;")
+
 	elif os_identification() == "linux2":
 		linux_path = "file:///out.png"
 		mint = "gsettings set org.cinnamon.desktop.background picture-uri " + linux_path  
@@ -65,6 +67,7 @@ def set_wallpaper():
 			os.system(mint)
 		except:
 			os.system(ubuntu)
+			
 	elif os_identification() == "linux":
 		linux_path = "out.png"
 		arch = "gsettings set org.gnome.desktop.background picture-uri " + linux_path
