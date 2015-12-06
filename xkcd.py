@@ -40,7 +40,7 @@ def create_wallpaper():
         except:
             print("No GDK Found ")
 
-    background = Image.new('RGBA', (width,height), (255,255,255,255))
+    	background = Image.new('RGBA', (width,height), (255,255,255,255))
 	background_w, background_h = background.size
 
 	offset = ( (background_w - comic_w) / 2, (background_h - comic_h) / 2 )
