@@ -1,24 +1,36 @@
 # xkcd
 
-This tiny python script makes the latest xkcd comic your wallpaper provided you set the script as a cron job .
+This tiny python script automatically sets the latest xkcd comic as your wallpaper,
+provided you set the script as a cron job.
 
-## Install
+## Requirements
 
-Make sure you have the following python libraries installed ,
-```
-pip install requests
-pip install pillow
-pip install beautifulsoup4
-pip install gi
-```
+### Linux
 
-For installation ,
-```
-curl https://raw.githubusercontent.com/saru95/xkcd/master/xkcd.py > ~/xkcd.py
-chmod +x ~/xkcd.py
-```
-Now for it to automatically change your wallpaper, set it as a cron job. Setting up a cron job is easy, 
-you can read about it here `http://benr75.com/pages/using_crontab_mac_os_x_unix_linux` .
+Make sure you install [PyGObject](https://wiki.gnome.org/Projects/PyGObject):
+
+Fedora (YUM): `yum install pygobject3`
+Fedora (DNF): `dnf install pygobject3`
+Debian & Ubuntu: `apt-get install python-gi`
+
+### Windows
+
+???
+
+### OSX
+
+???
+
+## Installation
+
+Clone and cd into the repository and run `python setup.py install`
+
+## Running
+
+To update your wallpaper run `xkcd-wallpaper` and it should be updated.
+
+Now for it to automatically change your wallpaper, set it as a cron job. Setting up a cron job is easy,
+you can read about it [here](http://benr75.com/pages/using_crontab_mac_os_x_unix_linux).
 
 ## Screenshots
 
