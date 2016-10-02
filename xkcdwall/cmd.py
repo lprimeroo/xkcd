@@ -59,7 +59,7 @@ def os_identification():
 def set_wallpaper():
     create_wallpaper()
     if os_identification() == "darwin":
-        app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";"    .format("~/out.png")
+        app_script = "sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db \"update data set value = '{}'\";".format("~/out.png")
         os.system(app_script)
         os.system("killall Dock;")
 
