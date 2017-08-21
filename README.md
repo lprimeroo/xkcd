@@ -1,7 +1,7 @@
 # xkcd
 
 This tiny python script automatically sets the latest xkcd comic as your wallpaper,
-provided you set the script as a cron job.
+provided you set the script as a cron job. [Not maintained anymore]
 
 ## Requirements
 
@@ -9,17 +9,20 @@ provided you set the script as a cron job.
 
 Make sure you install [PyGObject](https://wiki.gnome.org/Projects/PyGObject):
 
-Fedora (YUM): `yum install pygobject3`
-Fedora (DNF): `dnf install pygobject3`
-Debian & Ubuntu: `apt-get install python-gi`
+Fedora (YUM)
+```
+yum install pygobject3
+```
 
-### Windows
+Fedora (DNF)
+```
+dnf install pygobject3
+```
 
-???
-
-### OSX
-
-???
+Debian & Ubuntu
+```
+apt-get install python-gi
+```
 
 ## Installation
 
@@ -34,6 +37,6 @@ you can read about it [here](http://benr75.com/pages/using_crontab_mac_os_x_unix
 
 ## Screenshots
 
-Will probably look something like this ,
+Will probably look something like this,
 
 ![](http://i66.tinypic.com/35a3tbs.jpg)
